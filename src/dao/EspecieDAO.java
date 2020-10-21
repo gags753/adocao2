@@ -43,15 +43,7 @@ public class EspecieDAO {
 			
 			while(rs.next()) {
 				System.out.print("Código especie: " + rs.getInt("id_especie"));
-				System.out.print("\tNome da especie: " + rs.getString("nome"));
-				System.out.print("\tIdade filhote: " + rs.getDouble("max_nascimento"));
-				System.out.print("\tÍnicio da infância: " + rs.getDouble("min_crianca"));
-				System.out.print("\tFim da infância: " + rs.getDouble("max_crianca"));
-				System.out.print("\tÍnicio da juventude: " + rs.getDouble("min_jovem"));
-				System.out.print("\tFim da juventude: " + rs.getDouble("max_jovem"));
-				System.out.print("\tÍnicio da fase adulta: " + rs.getDouble("min_adulto"));
-				System.out.print("\tFim da fase adulta: " + rs.getDouble("max_adulto"));
-				System.out.println("\tÍnicio da velhice: " + rs.getDouble("idoso"));
+				System.out.println("\tNome da especie: " + rs.getString("nome"));
 				
 			}
 		} catch (SQLException e) {
@@ -61,19 +53,14 @@ public class EspecieDAO {
 	}
 	
 	
-	public void insertEspecie(String nome, double nascimento, double crianca_min, 
-			double crianca_max, double jovem_min, double jovem_max, double adulto_min,
-			double adulto_max, double idoso) {
+	public void insertEspecie(String nome) {
 		
 		
 		try {
 			int indice = getIndice() + 1;
 			
-			String query = "insert into especie (id_especie, nome, max_nascimento, min_crianca, " + 
-			"max_crianca, min_jovem, max_jovem, min_adulto, max_adulto, idoso) values "
-			+ "(" + indice + ", '" + nome + "', " + nascimento + ", " + crianca_min + ", " + crianca_max
-			+ ", " + jovem_min + ", " + jovem_max + ", " + adulto_min + ", " + adulto_max
-			+ ", " + idoso + ")";
+			String query = "insert into especie (id_especie, nome) values "
+			+ "(" + indice + ", '" + nome +"')";
 			
 			System.out.println(query);
 			
@@ -120,9 +107,9 @@ public class EspecieDAO {
 	public static void main(String[] args) {
 		EspecieDAO dao = new EspecieDAO();
 		
-		dao.insertEspecie("gato", 1, 1.1, 12, 12.1, 36, 36.1, 84, 84.1);
+		//dao.insertEspecie("cachorro");
 		
-		dao.readEspecie();
+		//dao.readEspecie();
 		
 		//dao.deleteEspecie(1);
 		

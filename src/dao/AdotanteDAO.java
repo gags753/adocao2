@@ -62,38 +62,21 @@ public class AdotanteDAO {
 	}
 	
 	public void cadastroAdotante(String nome, String sexo, String endereco, String telefone,
-			String email) {
+			String email, int id_animal) {
 		
 		try {
 			
 			int indice = getIndice() + 1;
 			
-			String query = "insert into adotante (id_adotante ,nome, sexo, endereco, telefone, email) values(" + 
+			String query = "insert into adotante (id_adotante ,nome, sexo, endereco, telefone, email, id_animal) values(" + 
 					indice + ",'" + nome + "', '" + sexo + "', '" + endereco + 
-					"', '" + telefone + "', '" + email + "')";
+					"', '" + telefone + "', '" + email + "', " + id_animal + ")";
 			
 			System.out.println(query);
 			
 			
 			Statement stmt = connection.createStatement();
 			stmt.executeUpdate(query);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-	}
-	
-	public void EscolhaDoAnimal(int id_animal, int id_adotante) {
-		
-		try {
-			
-			String query_adotante = "insert into adotante (id_animal) values (" + id_animal + ")";
-			String query_animal = "insert into animal (id_adotante) values (" + id_adotante + ")";
-			
-			Statement stmt = connection.createStatement();
-			stmt.executeUpdate(query_adotante);
-			stmt.executeUpdate(query_animal);
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -132,12 +115,14 @@ public class AdotanteDAO {
 		
 		//dao.readAdotante();
 		
-		//dao.cadastroAdotante("Gabriel", "M", "Av. Edson M. 60", "99999999", "gabrielcartun@gmail.com");
+		dao.cadastroAdotante("Gabriel", "M", "Av. Edson M. 60", "99999999", "gabrielcartun@gmail.com", 1);
 		
 		dao.readAdotante();
 		
-		dao.deleteAdotante(1);
-		dao.readAdotante();
+		//dao.deleteAdotante(1);
+		//dao.deleteAdotante(2);
+		//dao.readAdotante();
+		
 	}
 
 
