@@ -41,7 +41,7 @@ public class AssociacaoDAO {
 		try {
 			Statement stmt = connection.createStatement();
 			
-			ResultSet rs = stmt.executeQuery("select id from associacao");
+			ResultSet rs = stmt.executeQuery("select * from associacao");
 			
 			
 			while(rs.next()) {
@@ -104,7 +104,11 @@ public class AssociacaoDAO {
 	public static void main(String[] args) {
 		AssociacaoDAO dao = new AssociacaoDAO();
 		
+		dao.readAssociacao();
+		
 		dao.insertAssociacao("Pelos animais", "99999999", "Av. Dos Lobos");
+		
+		dao.readAssociacao();
 		
 		dao.deleteAssociacao(2);
 		
