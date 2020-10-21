@@ -8,7 +8,7 @@ public class Conexao {
 	private final static String driver = "org.postgresql.Driver";
 	private final static String URL = "jdbc:postgresql://localhost:5432/adocao";
 	private final static String USUARIO = "postgres";
-	private final static String SENHA = "402789";
+	private final static String SENHA = "402789"; //402789
 	
 	private Connection connection;
 	
